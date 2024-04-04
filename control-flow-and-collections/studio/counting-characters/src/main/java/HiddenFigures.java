@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class HiddenFigures {
     public static void main(String[] args){
@@ -22,11 +23,16 @@ public class HiddenFigures {
 
         //Prints individual letters in hashmap
         for (char letter : charactersInString){
-            characterHashMap.put(letter, charactersInString.length);
+            if (characterHashMap.containsKey(letter)){
+            characterHashMap.put(letter, characterHashMap.get(letter)+1);
+            } else {
+                characterHashMap.put(letter, 1);
+            }
         }
-        System.out.print(characterHashMap);
 
-
+        for (Map.Entry<Character, Integer> letter : characterHashMap.entrySet()) {
+            System.out.println(letter.getKey() + ": " + letter.getValue() );
+        }
     }
 
 }
